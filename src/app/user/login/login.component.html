@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Meeting Scheduler</a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/signup']">SignUp</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="jumbotron text-center">
+  <h1 class="display-5">Login to Meeting Scheduler</h1>
+</div>
+
+<div class="container">
+  <form [formGroup]="signinForm" (ngSubmit)="signOn()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        class="form-control"
+        type="text"
+        id="email"
+        formControlName="email"
+        placeholder="Enter your email"
+      />
+      <span *ngIf="!signinForm.get('email').valid && signinForm.get('email').touched" class="help-block text-danger">
+          <span *ngIf="signinForm.get('email').errors['required']">Enter email</span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="password">password</label>
+      <input
+        class="form-control"
+        type="password"
+        formControlName="password"
+        placeholder="Enter your password"
+      />
+      <span *ngIf="!signinForm.get('password').valid && signinForm.get('password').touched" class="help-block text-danger">
+        <span *ngIf="signinForm.get('password').errors['required']">Enter Password</span>
+    </span>
+    </div>
+    <div class="text-center">
+      <button class="btn btn-primary btn-lg" button="submit" [disabled]="!signinForm.valid">Login</button>
+    </div>
+  </form>
+</div>
