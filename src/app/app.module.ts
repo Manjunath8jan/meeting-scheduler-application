@@ -7,9 +7,9 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 
 import { UserModule } from './user/user.module';
-import { SignupComponent } from './user/signup/signup.component';
 import { LoginComponent } from './user/login/login.component';
 import { FormsModule } from '@angular/forms';
+import { SlotsManagementModule } from './slots-management/slots-management.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     UserModule,
     FormsModule,
+    SlotsManagementModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent, pathMatch:'full' },
       { path: '', component: LoginComponent },

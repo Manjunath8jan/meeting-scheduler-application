@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AppService } from '../../app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,8 @@ export class LoginComponent implements OnInit {
 
   signinForm : FormGroup;
 
-  constructor() { }
+  constructor(public appService: AppService,
+              public router: Router) { }
 
   ngOnInit() {
 
@@ -21,8 +24,22 @@ export class LoginComponent implements OnInit {
 
   }
 
-  signOn(){
+  signOn = () => {
     console.log(this.signinForm);
+    let data = {
+      email: this.signinForm.value.email,
+      password: this.signinForm.value.password
+    }
+
+    this.appService.login(data)
+      .subscribe((apiResponse) => {
+        console.log(apiResponse);
+        if(apiResponse.status === 200){
+          console.log('successful');
+          this.router.navigate(['/admin-login']);
+        }
+      })
+
   }
 
 }

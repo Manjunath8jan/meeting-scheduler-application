@@ -2,9 +2,12 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms'
 import { Subscription } from 'rxjs';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
+import { Router } from '@angular/router';
 
 import { ICountry } from '../icountry';
 import { UserService } from '../user.service';
+import { AppService } from 'src/app/app.service';
+
 
 @Component({
   selector: 'app-signup',
@@ -23,7 +26,9 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    private appService: UserService
+    private userService: UserService,
+    public appService: AppService,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -64,14 +69,26 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    console.log(this.signupForm);
+    console.log(this.signupForm.value);
+    let data = {
+      firstName: this.signupForm.value.firstName,
+      lastName: this.signupForm.value.lastName,
+      email: this.signupForm.value.email,
+      mobile: this.signupForm.value.phone,
+      password: this.signupForm.value.password
+    }
+
+    this.appService.signUp(data).subscribe((apiResponse) => {
+      if(apiResponse.status === 200)
+        this.router.navigate(['/login']);
+    })
     this.signupForm.reset();
   }
 
   
 
   private fetchCountryList(): void{
-    this.subscription = this.appService.getCountries().subscribe((res: ICountry[]) => {
+    this.subscription = this.userService.getCountries().subscribe((res: ICountry[]) => {
       this.countries = res;
     }, error => error)
   }
