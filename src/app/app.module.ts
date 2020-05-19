@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { UserModule } from './user/user.module';
 import { LoginComponent } from './user/login/login.component';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module'
 import { SlotsManagementModule } from './slots-management/slots-management.module';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { SlotsManagementModule } from './slots-management/slots-management.modul
     AppRoutingModule,
     UserModule,
     FormsModule,
+    SharedModule,
     SlotsManagementModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent, pathMatch:'full' },

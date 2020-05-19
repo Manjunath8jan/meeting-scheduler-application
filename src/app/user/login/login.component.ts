@@ -30,15 +30,15 @@ export class LoginComponent implements OnInit {
       email: this.signinForm.value.email,
       password: this.signinForm.value.password
     }
-
-    this.appService.login(data)
-      .subscribe((apiResponse) => {
-        console.log(apiResponse);
-        if(apiResponse.status === 200){
-          console.log('successful');
-          this.router.navigate(['/admin-login']);
-        }
-      })
+    this.router.navigate(['/admin-login']);
+    // this.appService.login(data)
+    //   .subscribe((apiResponse) => {
+    //     console.log(apiResponse);
+    //     if(apiResponse.status === 200){
+    //       console.log('successful');
+    //       this.router.navigate(['/admin-login']);
+    //     }
+    //   })
 
   }
 

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
+  myAccount: any = ["myName", "MyAccount", "settngs" ];
+
   constructor() { }
 
   ngOnInit() {

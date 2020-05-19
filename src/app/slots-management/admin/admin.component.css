@@ -1,0 +1,18 @@
+
+  #leftCol {
+    margin-left: 1rem;
+    
+    width: 200px;
+    background-color: #DDD; 
+    font-size: 21px;
+    overflow-y: auto;
+    top: 4rem;
+    bottom: 0;
+}
+
+#content {
+    position: relative;            
+    margin-left: 100px;
+    margin-right: 50px;
+    width: 100%;
+}

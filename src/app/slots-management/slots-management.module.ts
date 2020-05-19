@@ -5,6 +5,8 @@ import { AdminComponent } from './admin/admin.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../shared/shared.module';
+import { MycalenderComponent } from '../shared/mycalender/mycalender.component';
 
 
 @NgModule({
@@ -13,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    SharedModule,
     HttpClientModule,
     RouterModule.forChild([
       {path: 'admin-login', component: AdminComponent}
