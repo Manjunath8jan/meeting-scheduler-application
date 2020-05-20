@@ -48,6 +48,7 @@ export class MycalenderComponent implements OnInit {
   ngOnInit() {
   }
   @ViewChild("modalContent", { static: true }) modalContent: TemplateRef<any>;
+  @ViewChild("addMyEvent", { static: true }) addMyEvent: TemplateRef<any>;
 
   view: CalendarView = CalendarView.Month;
 
@@ -126,10 +127,7 @@ export class MycalenderComponent implements OnInit {
   
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
-      if (
-        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        events.length === 0
-      ) {
+      if (this.activeDayIsOpen === true) {
         this.activeDayIsOpen = false;
       } else {
         this.activeDayIsOpen = true;
@@ -176,6 +174,7 @@ export class MycalenderComponent implements OnInit {
         }
       }
     ];
+    this.modal.open(this.addMyEvent, { size: "lg" });
   }
 
   deleteEvent(eventToDelete: CalendarEvent) {
